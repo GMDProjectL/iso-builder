@@ -81,6 +81,7 @@ jobs:
       
       - name: Clone the installer
         run: |
+          mkdir archlive/airootfs/opt
           mkdir archlive/airootfs/opt/installer
           git clone https://github.com/GMDProjectL/installer archlive/airoots/opt/installer
       
