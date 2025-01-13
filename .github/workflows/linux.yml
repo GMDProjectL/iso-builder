@@ -23,7 +23,7 @@ jobs:
 
       - name: Create Arch Distrobox
         run: |
-          distrobox create --image archlinux --name arch
+          distrobox create --image archlinux --name arch -Y
 
       - name: Enter Arch Distrobox
         run: |
