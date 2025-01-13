@@ -51,7 +51,7 @@ jobs:
       
       - name: Build archiso
         run: |
-          sudo distrobox enter arch -- mkarchiso -v -w /tmp/archiso-tmp archlive
+          distrobox enter arch -- sudo mkarchiso -v -w /tmp/archiso-tmp archlive
       
       - name: Make sure the archiso is here
         run: |
