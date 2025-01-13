@@ -27,12 +27,6 @@ jobs:
 
       - name: Enter Arch Distrobox
         run: |
-          distrobox enter arch
-
-      - name: Install neofetch
-        run: |
-           pacman -Syu neofetch --noconfirm
-       
-      - name: I use Arch by the way
-        run: |
-            neofetch
+          distrobox enter arch -- "
+          pacman -Syu neofetch --noconfirm &&
+          neofetch"
