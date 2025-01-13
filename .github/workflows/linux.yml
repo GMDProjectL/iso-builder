@@ -79,7 +79,7 @@ jobs:
       
       - name: Copy .zshrc for autostarting Hyprland
         run: |
-          cp .zshrc archlive/airootfs/skel/.zshrc
+          cp .zshrc archlive/airootfs/etc/skel/.zshrc
       
       - name: Clone the installer
         run: |
