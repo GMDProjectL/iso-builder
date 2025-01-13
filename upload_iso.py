@@ -9,6 +9,4 @@ for filename in os.listdir('out/'):
         'curl', '-F', f'file=@out/{filename}', 'https://temp.sh/upload'
     ])
 
-    url = process.stdout.decode()
-
-    print(f'Uploaded: {filename} to {url}')
+    print(f'\n\nUploaded: {filename}')
