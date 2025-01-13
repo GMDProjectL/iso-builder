@@ -122,5 +122,9 @@ jobs:
           path: out/*
       
       - name: Upload the ISO to temp.sh
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
+          sudo apt-get install python3-requests
           python3 upload_iso.py
