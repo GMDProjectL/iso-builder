@@ -75,7 +75,8 @@ jobs:
       - name: Copy .config to archlive/airootfs/etc/skel
         run: |
           mkdir -p archlive/airootfs/etc/skel/.config
-          cp -r .config archlive/airootfs/etc/skel/.config
+          cp -r .config/hypr archlive/airootfs/etc/skel/.config/
+          cp -r .config/waybar archlive/airootfs/etc/skel/.config/
       
       - name: Copy .zshrc for autostarting Hyprland
         run: |
