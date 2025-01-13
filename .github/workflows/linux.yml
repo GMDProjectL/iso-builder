@@ -1,4 +1,4 @@
-name: Install Arch Distrobox on Ubuntu
+name: Build Project GDL Live ISO
 
 on:
   push:
@@ -56,6 +56,10 @@ jobs:
           echo "root:!*::root" > archlive/airootfs/etc/gshadow
           echo "liveuser:!*::" >> archlive/airootfs/etc/gshadow
       
+      - name: Setup autologin
+        run: |
+          python setup_autologin.py
+      
       - name: Generate os-release
         run: |
           cat os-release > archlive/airootfs/etc/os-release
@@ -66,18 +70,16 @@ jobs:
       
       - name: Add some dependencies
         run: |
-          echo "hyprland" >> archlive/packages.x86_64
-          echo "waybar" >> archlive/packages.x86_64
-          echo "python" >> archlive/packages.x86_64
-          echo "python-requests" >> archlive/packages.x86_64
-          echo "python-systemd" >> archlive/packages.x86_64
-          echo "npm" >> archlive/packages.x86_64
-          echo "nodejs" >> archlive/packages.x86_64
-          echo "electron33" >> archlive/packages.x86_64
+          python patch_packages.py
       
       - name: Copy .config to archlive/airootfs/etc/skel
         run: |
-          cp -r .config archlive/airootfs/etc/skel
+          mkdir -p archlive/airootfs/etc/skel/.config
+          cp -r .config archlive/airootfs/etc/skel/.config
+      
+      - name: Copy .zshrc for autostarting Hyprland
+        run: |
+          cp .zshrc archlive/airootfs/skel/.zshrc
       
       - name: Clone the installer
         run: |
@@ -96,7 +98,15 @@ jobs:
       - name: Activate the service (it requires network-online.target)
         run: |
           ln -s /etc/systemd/system/pgdl-server.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/pgdl-server.service
-      
+    
+      - name: Adjust installer permissions
+        run: |
+          python adjust_installer_permissions.py
+
+      - name: Activate the NetworkManager service
+        run: |
+          ln -s /usr/lib/systemd/system/NetworkManager.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/NetworkManager.service
+    
       - name: Build archiso
         run: |
           distrobox enter --root arch --root -- sudo mkarchiso -v -w builddir archlive
