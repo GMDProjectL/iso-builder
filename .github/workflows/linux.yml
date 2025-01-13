@@ -27,8 +27,32 @@ jobs:
 
       - name: Enter Arch Distrobox
         run: |
-          distrobox enter arch -- sudo pacman -Syu neofetch --noconfirm
+          distrobox enter arch -- sudo pacman -Syu neofetch arch-install-scripts archiso --noconfirm
 
-      - name: Arch btw
+      - name: Scaffhold archiso directory
         run: |
-          distrobox enter arch -- neofetch
+          distrobox enter arch -- cp -r /usr/share/archiso/configs/releng/ archlive
+      
+      - name: Configure archiso root user
+        run: |
+          echo "root:x:0:0:root:/root:/usr/bin/zsh" > archlive/airootfs/etc/passwd
+      
+      - name: Configure archiso root shadow
+        run: |
+          echo "root::14871::::::" > archlive/airootfs/etc/shadow
+      
+      - name: Configure archiso root group
+        run: |
+          echo "root:x:0:root" > archlive/airootfs/etc/group
+      
+      - name: Configure archiso root gshadow
+        run: |
+          echo "root:!*::root" > archlive/airootfs/etc/gshadow
+      
+      - name: Build archiso
+        run: |
+          distrobox enter arch -- mkarchiso -v -w /tmp/archiso-tmp archlive
+      
+      - name: Make sure the archiso is here
+        run: |
+            ls -la
