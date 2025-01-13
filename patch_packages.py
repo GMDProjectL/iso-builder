@@ -15,6 +15,7 @@ packages += 'network-manager-applet\n'
 packages += 'adw-gtk-theme\n'
 packages += 'kitty\n'
 packages += 'gparted\n'
+packages += 'ttf-roboto\n'
 
 packages = packages.replace('grml-zsh-config', '')
 
