@@ -13,6 +13,7 @@ packages += 'electron33\n'
 packages += 'networkmanager\n'
 packages += 'network-manager-applet\n'
 packages += 'adw-gtk-theme\n'
+packages += 'kitty\n'
 
 packages = packages.replace('grml-zsh-config', '')
 

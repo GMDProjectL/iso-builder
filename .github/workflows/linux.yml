@@ -58,7 +58,7 @@ jobs:
       
       - name: Setup autologin
         run: |
-          python setup_autologin.py
+          python3 setup_autologin.py
       
       - name: Generate os-release
         run: |
@@ -70,7 +70,7 @@ jobs:
       
       - name: Add some dependencies
         run: |
-          python patch_packages.py
+          python3 patch_packages.py
       
       - name: Copy .config to archlive/airootfs/etc/skel
         run: |
@@ -102,7 +102,11 @@ jobs:
     
       - name: Adjust installer permissions
         run: |
-          python adjust_installer_permissions.py
+          python3 adjust_installer_permissions.py
+
+      - name: Patch GRUB
+        run: |
+          python3 patch_grub.py
 
       - name: Activate the NetworkManager service
         run: |

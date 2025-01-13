@@ -7,13 +7,14 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "custom/ed",
-        "tray"
+        "custom/ed"
     ],
     "modules-center": [
         "clock"
     ],
     "modules-right": [
+        "tray",
+        "custom/ed",
 	    "custom/wlogout",
         "custom/ed"
     ],
