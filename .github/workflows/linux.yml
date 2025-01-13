@@ -51,7 +51,7 @@ jobs:
       
       - name: Build archiso
         run: |
-          distrobox enter arch -- sudo mkarchiso -v -w builddir archlive
+          distrobox enter arch --root -- sudo mkarchiso -v -w builddir archlive
       
       - name: Install tree
         run: |
