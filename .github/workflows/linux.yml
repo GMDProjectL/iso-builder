@@ -81,15 +81,13 @@ jobs:
       
       - name: Clone the installer
         run: |
-          mkdir archlive/airootfs/opt
-          mkdir archlive/airootfs/opt/installer
-          git clone https://github.com/GMDProjectL/installer archlive/airoots/opt/installer
+          git clone https://github.com/GMDProjectL/installer
       
-      - name: Build npm installer
+      - name: Build and copy npm installer
         run: |
-          cd archlive/airootfs/opt/installer
-          npm install
-          npm run build
+          mkdir archlive/airootfs/opt
+          python3 bootstrap_installer.py
+          cp -r ./installer archlive/airootfs/opt/installer
 
       - name: Copy server systemd service from installer/assets/pgdl-server.service to /etc/systemd/system/pgdl-server.service
         run: |
