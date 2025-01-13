@@ -27,6 +27,6 @@ jobs:
 
       - name: Enter Arch Distrobox
         run: |
-          distrobox enter arch -- "
-          pacman -Syu neofetch --noconfirm &&
+          distrobox enter arch -- " |
+          pacman -Syu neofetch --noconfirm && |
           neofetch"
