@@ -10,7 +10,7 @@ for filename in os.listdir('out/'):
     print(f'Uploading {filename} to temp.sh ...')
 
     files = {
-        'file': open(filename, 'rb'),
+        'file': open(f'out/{filename}', 'rb'),
     }
 
     response = requests.post('https://temp.sh/upload', files=files)
