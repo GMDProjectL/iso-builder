@@ -62,8 +62,7 @@ jobs:
       
       - name: Patch profiledef.sh
         run: |
-          sed -i 's/iso_name="archlinux"/iso_name="projectgdl"/g' archlive/profiledef.sh
-          sed -i 's/iso_publisher="Arch Linux <https://archlinux.org>"/iso_publisher="Project GDL <https://t.me/ProjectGDL>"/g' archlive/profiledef.sh
+          python3 patch_profiledef.py
       
       - name: Add some dependencies
         run: |
