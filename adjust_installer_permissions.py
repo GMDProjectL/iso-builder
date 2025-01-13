@@ -4,7 +4,7 @@ with open(profiledef_path, 'r') as f:
     profiledef = f.read()
 
 
-payload = '["/opt/installer"]="1000:1000:7777"'
+payload = '["/opt/installer/"]="1000:1000:7777"'
 profiledef = profiledef.replace('file_permissions=(', 'file_permissions=(\n' + payload + '\n')
 
 

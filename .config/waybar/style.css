@@ -1,16 +1,7 @@
-* {
-    color: white;
-}
-
 .module {
 	padding-left: 7.5px;
 	padding-right: 7.5px;
 	padding-top: 1.5px;
-}
-
-#tray * {
-    padding-left: 7.5px;
-    padding-right: 7.5px;
 }
 
 window#waybar {
