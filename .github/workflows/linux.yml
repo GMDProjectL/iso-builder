@@ -36,18 +36,29 @@ jobs:
       - name: Configure archiso root user
         run: |
           echo "root:x:0:0:root:/root:/usr/bin/zsh" > archlive/airootfs/etc/passwd
+          echo "liveuser:x:1000:1000::/home/liveuser:/usr/bin/zsh" >> archlive/airootfs/etc/passwd
       
       - name: Configure archiso root shadow
         run: |
           echo "root::14871::::::" > archlive/airootfs/etc/shadow
+          echo "liveuser::14871::::::" >> archlive/airootfs/etc/shadow
       
       - name: Configure archiso root group
         run: |
           echo "root:x:0:root" > archlive/airootfs/etc/group
+          echo "adm:x:4:liveuser" >> archlive/airootfs/etc/group
+          echo "wheel:x:10:liveuser" >> archlive/airootfs/etc/group
+          echo "uucp:x:14:liveuser" >> archlive/airootfs/etc/group
+          echo "liveuser:x:1000:" >> archlive/airootfs/etc/group
       
       - name: Configure archiso root gshadow
         run: |
           echo "root:!*::root" > archlive/airootfs/etc/gshadow
+          echo "liveuser:!*::" >> archlive/airootfs/etc/gshadow
+      
+      - name: Generate os-release
+        run: |
+          cat os-release > archlive/airootfs/etc/os-release
       
       - name: Build archiso
         run: |
