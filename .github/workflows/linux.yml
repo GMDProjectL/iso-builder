@@ -1,0 +1,38 @@
+name: Install Arch Distrobox on Ubuntu
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  install-arch-distrobox:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y podman
+
+      - name: Install Distrobox
+        run: |
+          curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh
+
+      - name: Create Arch Distrobox
+        run: |
+          distrobox create --image archlinux --name arch
+
+      - name: Enter Arch Distrobox
+        run: |
+          distrobox enter arch
+
+      - name: Install neofetch
+        run: |
+           pacman -Syu neofetch --noconfirm
+       
+      - name: I use Arch by the way
+        run: |
+            neofetch
