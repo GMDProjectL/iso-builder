@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  install-arch-distrobox:
+  buildiso:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -59,6 +59,45 @@ jobs:
       - name: Generate os-release
         run: |
           cat os-release > archlive/airootfs/etc/os-release
+      
+      - name: Patch profiledef.sh
+        run: |
+          sed -i 's/iso_name="archlinux"/iso_name="projectgdl"/g' archlive/profiledef.sh
+          sed -i 's/iso_publisher="Arch Linux <https://archlinux.org>"/iso_publisher="Project GDL <https://t.me/ProjectGDL>"/g' archlive/profiledef.sh
+      
+      - name: Add some dependencies
+        run: |
+          echo "hyprland" >> archlive/packages.x86_64
+          echo "waybar" >> archlive/packages.x86_64
+          echo "python" >> archlive/packages.x86_64
+          echo "python-requests" >> archlive/packages.x86_64
+          echo "python-systemd" >> archlive/packages.x86_64
+          echo "npm" >> archlive/packages.x86_64
+          echo "nodejs" >> archlive/packages.x86_64
+          echo "electron33" >> archlive/packages.x86_64
+      
+      - name: Copy .config to archlive/airootfs/etc/skel
+        run: |
+          cp -r .config archlive/airootfs/etc/skel
+      
+      - name: Clone the installer
+        run: |
+          mkdir archlive/airootfs/opt/installer
+          git clone https://github.com/GMDProjectL/installer archlive/airoots/opt/installer
+      
+      - name: Build npm installer
+        run: |
+          cd archlive/airootfs/opt/installer
+          npm install
+          npm run build
+
+      - name: Copy server systemd service from installer/assets/pgdl-server.service to /etc/systemd/system/pgdl-server.service
+        run: |
+          cp archlive/airootfs/opt/installer/assets/pgdl-server.service archlive/airootfs/etc/systemd/system/pgdl-server.service
+      
+      - name: Activate the service (it requires network-online.target)
+        run: |
+          ln -s /etc/systemd/system/pgdl-server.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/pgdl-server.service
       
       - name: Build archiso
         run: |
