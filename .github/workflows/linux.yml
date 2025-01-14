@@ -108,6 +108,10 @@ jobs:
         run: |
           python3 patch_grub.py
 
+      - name: Patch Systemd-boot
+        run: |
+          python3 patch_sdboot.py
+
       - name: Activate the NetworkManager service
         run: |
           ln -s /usr/lib/systemd/system/NetworkManager.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/NetworkManager.service
