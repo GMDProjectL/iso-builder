@@ -13,8 +13,8 @@ with open('archlive/efiboot/loader/loader.conf', 'r') as fp:
 sd_loader = sd_loader.replace('beep on', '')
 
 
-os.remove('archlive/efiboot/loader/entries/02-archiso-x86_64-speech-linux.conf')
-os.remove('archlive/efiboot/loader/entries/03-archiso-x86_64-memtest86+.conf')
+#os.remove('archlive/efiboot/loader/entries/02-archiso-x86_64-speech-linux.conf')
+#os.remove('archlive/efiboot/loader/entries/03-archiso-x86_64-memtest86+.conf')
 
 
 with open('archlive/efiboot/loader/entries/01-archiso-x86_64-linux.conf', 'w') as fp:
