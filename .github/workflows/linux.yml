@@ -127,10 +127,10 @@ jobs:
         run: |
           distrobox enter --root arch --root -- sudo mkarchiso -v -w builddir archlive
 
-      - name: Upload the ISO
-        uses: actions/upload-artifact@v4
-        with:
-          path: out/*
+      # - name: Upload the ISO
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     path: out/*
       
       - name: Upload the ISO to temp.sh
         env:
