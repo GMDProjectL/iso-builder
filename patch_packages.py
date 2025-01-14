@@ -18,7 +18,10 @@ packages += 'gnome-disk-utility\n'
 packages += 'ttf-roboto\n'
 packages += 'polkit\n'
 packages += 'polkit-kde-agent\n'
+packages += 'linux-headers\n'
+packages += 'dkms\n'
 
+packages = packages.replace('broadcom-wl', 'broadcom-wl-dkms')
 packages = packages.replace('grml-zsh-config', '')
 
 with open("archlive/packages.x86_64", 'w') as f:
