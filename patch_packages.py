@@ -3,6 +3,7 @@ with open("archlive/packages.x86_64", 'r') as f:
 
 packages += '\n'
 packages += 'hyprland\n'
+packages += 'hyprpaper\n'
 packages += 'waybar\n'
 packages += 'python\n'
 packages += 'python-requests\n'
