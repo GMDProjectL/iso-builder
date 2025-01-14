@@ -10,7 +10,7 @@
         "custom/ed"
     ],
     "modules-center": [
-        "clock"
+        
     ],
     "modules-right": [
         "tray",
@@ -80,13 +80,6 @@
     "tray": {
         // "icon-size": 21,
         "spacing": 1
-    },
-    "clock": {
-    	"format": "<b>{:%H:%M}</b>",
-        "timezone": "Europe/Moscow",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "<b>{:%d.%m.%Y}</b>",
-        "locale": "en_GB.UTF-8"
     },
     "cpu": {
         "format": "{usage}% ",
