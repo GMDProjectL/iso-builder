@@ -16,6 +16,13 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y podman
+          
+      - name: Notify about building an ISO
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 notify_about_building.py
 
       - name: Install Distrobox
         run: |
@@ -115,13 +122,6 @@ jobs:
       - name: Activate the NetworkManager service
         run: |
           ln -s /usr/lib/systemd/system/NetworkManager.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/NetworkManager.service
-
-      - name: Notify about building an ISO
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: |
-          python3 notify_about_building.py
 
       - name: Build archiso
         run: |
