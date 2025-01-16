@@ -27,8 +27,8 @@
     	"exec": "currentlyplaying"	
     },
     "custom/wlogout": {
-	"format" : "Shutdown",
-	"on-click": "poweroff"
+        "format" : "Shutdown",
+        "on-click": "poweroff"
     },
     "custom/hyprkb": {
     	"format": "{}",
