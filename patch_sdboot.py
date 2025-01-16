@@ -22,6 +22,7 @@ with open('archlive/efiboot/loader/entries/01-archiso-x86_64-speech-linux.conf',
 with open('archlive/efiboot/loader/loader.conf', 'r') as fp:
     sd_loader = fp.read()
 
+sd_loader = sd_loader.replace('timeout 15', 'timeout 0')
 sd_loader = sd_loader.replace('beep on', '')
 
 with open('archlive/efiboot/loader/loader.conf', 'w') as fp:
