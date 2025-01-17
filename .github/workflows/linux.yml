@@ -125,6 +125,7 @@ jobs:
       
       - name: Copy Plymouth theme
         run: |
+          mkdir -p archlive/airootfs/usr/share/plymouth/themes
           cp -r michigun archlive/airootfs/usr/share/plymouth/themes/
 
       - name: Patch Plymouth default theme
