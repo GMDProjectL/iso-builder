@@ -119,6 +119,18 @@ jobs:
         run: |
           python3 patch_sdboot.py
 
+      - name: Patch mkinitcpio hooks
+        run: |
+          python3 patch_mkinitcpio_hooks.py
+      
+      - name: Copy Plymouth theme
+        run: |
+          cp -r michigun archlive/airootfs/usr/share/plymouth/themes/
+
+      - name: Patch Plymouth default theme
+        run: |
+          python3 patch_plymouth_theme.py
+
       - name: Activate the NetworkManager service
         run: |
           ln -s /usr/lib/systemd/system/NetworkManager.service archlive/airootfs/etc/systemd/system/multi-user.target.wants/NetworkManager.service

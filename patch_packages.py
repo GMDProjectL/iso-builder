@@ -21,6 +21,7 @@ packages += 'polkit\n'
 packages += 'polkit-kde-agent\n'
 packages += 'linux-headers\n'
 packages += 'dkms\n'
+packages += 'plymouth\n'
 
 packages = packages.replace('broadcom-wl', 'broadcom-wl-dkms')
 packages = packages.replace('grml-zsh-config', '')
