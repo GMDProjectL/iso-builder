@@ -4,6 +4,7 @@ with open('archlive/efiboot/loader/entries/01-archiso-x86_64-linux.conf', 'r') a
     sd_archiso = fp.read()
 
 sd_archiso = sd_archiso.replace('Arch Linux', 'Project GDL')
+sd_archiso = sd_archiso.replace('%ARCHISO_UUID%', '%ARCHISO_UUID% quiet splash')
 
 with open('archlive/efiboot/loader/entries/01-archiso-x86_64-linux.conf', 'w') as fp:
     fp.write(sd_archiso)
@@ -14,7 +15,7 @@ with open('archlive/efiboot/loader/entries/02-archiso-x86_64-speech-linux.conf',
 
 sd2_archiso = sd2_archiso.replace('Arch Linux', 'Project GDL')
 
-with open('archlive/efiboot/loader/entries/01-archiso-x86_64-speech-linux.conf', 'w') as fp:
+with open('archlive/efiboot/loader/entries/02-archiso-x86_64-speech-linux.conf', 'w') as fp:
     fp.write(sd2_archiso)
 
 
