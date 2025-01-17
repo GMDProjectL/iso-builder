@@ -127,6 +127,7 @@ jobs:
         run: |
           distrobox enter --root arch --root -- sudo mkarchiso -v -w builddir archlive
 
+      # sowwy fare
       - name: Upload the ISO to temp.sh
         env:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
