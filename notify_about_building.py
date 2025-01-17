@@ -8,6 +8,6 @@ TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 r = requests.post(f'https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage', json={
     'chat_id': TELEGRAM_CHAT_ID,
-    'text': f'Starting <a href="https://github.com/GMDProjectL/iso-builder/actions">building</a> the ISO... ',
+    'text': f'Starting <a href="https://github.com/GMDProjectL/iso-builder/actions">building</a> the ISO. Wait for 15 minutes 🕙',
     'parse_mode': 'HTML'
 })
