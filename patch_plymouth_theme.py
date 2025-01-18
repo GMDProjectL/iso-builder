@@ -10,4 +10,5 @@ pmt_path = pmt_directory + '/plymouthd.conf'
 
 with open(pmt_path, 'w') as f:
     f.write('[Daemon]\nTheme=michigun')
-    print('Created plymouth config from scratch!')
+
+print('Created plymouth config from scratch!')

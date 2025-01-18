@@ -26,5 +26,6 @@ packages += 'plymouth\n'
 packages = packages.replace('broadcom-wl', 'broadcom-wl-dkms')
 packages = packages.replace('grml-zsh-config', '')
 
+
 with open("archlive/packages.x86_64", 'w') as f:
     f.write(packages)
