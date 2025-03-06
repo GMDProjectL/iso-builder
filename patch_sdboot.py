@@ -24,7 +24,7 @@ with open('archlive/efiboot/loader/loader.conf', 'r') as fp:
     sd_loader = fp.read()
 
 sd_loader = sd_loader.replace('timeout 15', 'timeout 0')
-sd_loader = sd_loader.replace('beep on', '')
+sd_loader = sd_loader.replace('beep on', 'beep off')
 
 with open('archlive/efiboot/loader/loader.conf', 'w') as fp:
     fp.write(sd_loader)
