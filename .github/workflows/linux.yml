@@ -36,7 +36,7 @@ jobs:
 
       - name: Enter Arch Distrobox
         run: |
-          distrobox enter --root arch -- sudo pacman -Syu neofetch arch-install-scripts archiso --noconfirm
+          distrobox enter --root arch -- sudo pacman -Syu arch-install-scripts archiso --noconfirm
 
       - name: Scaffhold archiso directory
         run: |
