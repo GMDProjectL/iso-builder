@@ -2,6 +2,9 @@ with open("archlive/packages.x86_64", 'r') as f:
     packages = f.read()
 
 packages += '\n'
+packages += 'vulkan-intel\n'
+packages += 'vulkan-nouveau\n'
+packages += 'vulkan-mesa-layers\n'
 packages += 'hyprland\n'
 packages += 'hyprpaper\n'
 packages += 'waybar\n'
