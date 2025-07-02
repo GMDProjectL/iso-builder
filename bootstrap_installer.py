@@ -1,5 +1,5 @@
 import os
 
 os.chdir("installer")
-os.system("npm install")
-os.system("npm run build")
+os.system("pnpm i")
+os.system("pnpm build")
