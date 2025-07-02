@@ -1,5 +1,4 @@
 import os
 
 os.chdir("installer")
-os.system("pnpm i")
-os.system("pnpm build")
+os.system("distrobox enter --root arch -- pnpm i && pnpm build")
